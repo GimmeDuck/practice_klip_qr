@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import Caver from 'caver-js'; //caver-js 연동
 import './App.css';
+import QRCode from "qrcode.react";
+import * as KlipAPI from "./UseKlip.js";
+
+
+/**** npm run start으로 시작하기 *****/
 
 //필요한 정보 상수로 저장하기
 const CONTRACT_ADDRESS = '';  //사용할 컨트랙 주소
@@ -50,6 +55,12 @@ const f_name2 = async (input) => {
     console.log(receipt);
 } 
 
+//qrvalue 주소 함수
+const [qrvalue, setQrvalue] = useState("DEFAULT");
+
+const onClickGetAddress = () => {
+	KlipAPI.getAddress(setQrvalue);
+};
 
 
 function App() {
@@ -67,7 +78,9 @@ function App() {
         <p>
           {balance}
         </p>
-        
+        <button onClick={()=>{onClickGetAddress();}}>주소 가져오기</button> 
+        <QRCode value={qrvalue} />
+
       </header>
     </div>
   );
