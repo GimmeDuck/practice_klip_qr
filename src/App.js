@@ -53,24 +53,30 @@ const f_name2 = async (input) => {
 
 
 function App() {
+  const [balance, getBalance] = useState('0');  //balance 받아오는 set함수
+
+	const onPressButton = (인자, State함수) => { 
+		console.log('버튼 클릭');
+    State함수(인자);
+	};
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <button onclick={()=>{onPressButton(인자)}}> ClickMe </button> 
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {balance}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
       </header>
     </div>
   );
 }
 
 export default App;
+
+
+/*
+call은 읽은 값을 리턴해서 보여주지만, send는 트랜잭션 결과를 console에 리턴함. 
+정말 잘 갔는지 확인하고 싶다면, 블록 해쉬를 Klayn Scope에 검색해서 확인하면 됨.
+*/
